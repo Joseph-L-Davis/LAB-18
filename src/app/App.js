@@ -9,8 +9,9 @@ import {
   Redirect
 } from 'react-router-dom';
 import './App.css';
-import FoodList from '../food/FoodList';
+//import FoodList from '../food/FoodList';
 import AuthPage from '../Auth/AuthPage';
+import FoodPage from '../food/FoodPage';
 
 
 class App extends Component {
@@ -61,12 +62,12 @@ render() {
             <Route path="/recipes" exact={true}
               render={routerProps => (
                 token
-                  ? <RecipesPage {...routerProps}/>
+                  ? <FoodPage {...routerProps}/>
                   : <Redirect to="/auth"/>
               )}
             />
 
-            <Route path="/resources/:id"
+            <Route path="/recipes/:id"
               render={routerProps => (
                 <div>Implement a page for id {routerProps.match.params.id}</div>
               )}

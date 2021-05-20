@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import RecipeList from '../food/RecipeList';
-import RecipeSearch from '../food/RecipeSearch';
-import { getRecipes, addFavorite, deleteFavorite, getMyFavorites } from '../utils/recipes-api';
+import FoodList from '../food/FoodList';
+import FoodSearch from '../food/FoodSearch';
+import { getRecipes, addFavorite, deleteFavorite, getMyFavorites } from '../utils/recipe-api.js';
 import './FoodPage.css';
 
 export default class FoodPage extends Component {
@@ -37,13 +37,14 @@ export default class FoodPage extends Component {
         console.log(err.message);
       }
     }
-
-    
   
     render() {
+      const { recipes } = this.state;
+
       return (
         <div className="FoodPage">
-        
+          {/* <FoodSearch onSearch={this.handleSearch}/> */}
+          <FoodList recipes={recipes}/>
         </div>
       );
     }
