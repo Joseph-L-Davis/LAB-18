@@ -43,7 +43,7 @@ export default class FoodPage extends Component {
 
       return (
         <div className="FoodPage">
-          {/* <FoodSearch onSearch={this.handleSearch}/> */}
+          {/* x<FoodSearch onSearch={this.handleSearch}/> */}
           <FoodList recipes={recipes}/>
         </div>
       );
