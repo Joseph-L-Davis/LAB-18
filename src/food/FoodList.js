@@ -5,10 +5,14 @@ import './FoodList.css';
 export default class FoodList extends Component {
   
   render() {
+    const { recipes, onFavorited } = this.props;
+
     return (
-      <div className="FoodList">
-        <FoodItem/>
-      </div>
+      <ul className="FoodList">
+        {recipes.map(recipe => (
+          <FoodItem key={recipe.recipeId} recipe={recipe} onFavorited={onFavorited}/>
+        ))}
+      </ul>
     );
   }
 
