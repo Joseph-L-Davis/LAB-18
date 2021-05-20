@@ -9,6 +9,8 @@ import {
   Redirect
 } from 'react-router-dom';
 import './App.css';
+import FoodList from '../food/FoodList';
+import AuthPage from '../Auth/AuthPage';
 
 
 class App extends Component {
@@ -41,7 +43,7 @@ render() {
         <Header userName={userName}/>
 
         <main>
-
+          
           <Switch>
             <Route path="/" exact={true}
               render={routerProps => (
@@ -49,9 +51,18 @@ render() {
               )}
             />
 
-            <Route path="/resources" exact={true}
+            <Route path="/auth" exact={true}
               render={routerProps => (
-                <div>Implement a page of resources</div>
+                <AuthPage {...routerProps}
+                  onUser={this.handleUser}/>
+              )}
+            />
+
+            <Route path="/recipes" exact={true}
+              render={routerProps => (
+                token
+                  ? <RecipesPage {...routerProps}/>
+                  : <Redirect to="/auth"/>
               )}
             />
 
