@@ -27,7 +27,7 @@ export default class FoodPage extends Component {
         const recipes = await getRecipes(search);
 
         const upgradedRecipes = recipes.map(recipe => {
-          const found = favorites.find(favorite => favorite.recipeId === recipe.recipeId);
+          const found = favorites.find(favorite => favorite.id === recipe.id);
           return found ? found : recipe;
         });
 
@@ -49,7 +49,7 @@ export default class FoodPage extends Component {
           const updatedRecipes = recipes.map(recipe => {
             return recipe.id === favoriteId
               ? {
-                recipeId: recipe.recipeId,
+                id: recipe.id,
                 name: recipe.name,
                 thumbnail_url: recipe.thumbnail_url,
                 num_servings: recipe.num_servings
@@ -59,9 +59,10 @@ export default class FoodPage extends Component {
           this.setState({ recipes: updatedRecipes });
         } else {
           const addedFavorite = await addFavorite(recipe);
+          console.log(recipe);
 
           const updatedRecipes = recipes.map(r => {
-            return r.recipeId === addedFavorite.recipeId
+            return r.id === addedFavorite.id
               ? addedFavorite
               : r;
           });
