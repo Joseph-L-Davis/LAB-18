@@ -37,6 +37,41 @@ export default class FoodPage extends Component {
         console.log(err.message);
       }
     }
+
+    handleFavorited = async recipe => {
+      try {
+        const { recipes } = this.state;
+        const favoriteId = recipe.id;
+
+        if (favoriteId) {
+          await deleteFavorite(favoriteId);
+
+          const updatedRecipes = recipes.map(recipe => {
+            return recipe.id === favoriteId
+              ? {
+                recipeId: recipe.recipeId,
+                name: recipe.name,
+                thumbnail_url: recipe.thumbnail_url,
+                num_servings: recipe.num_servings
+              }
+              : recipe;
+          });
+          this.setState({ recipes: updatedRecipes });
+        } else {
+          const addedFavorite = await addFavorite(recipe);
+
+          const updatedRecipes = recipes.map(r => {
+            return r.recipeId === addedFavorite.recipeId
+              ? addedFavorite
+              : r;
+          });
+          this.setState({ recipes: updatedRecipes });
+        }
+      }
+      catch (err) {
+        console.log(err.message);
+      }
+    }
   
     render() {
       const { recipes } = this.state;
@@ -44,7 +79,7 @@ export default class FoodPage extends Component {
       return (
         <div className="FoodPage">
           <FoodSearch onSearch={this.handleSearch}/>
-          <FoodList recipes={recipes}/>
+          <FoodList recipes={recipes} onFavorited={this.handleFavorited}/>
         </div>
       );
     }
