@@ -12,7 +12,7 @@ import './App.css';
 
 import FoodPage from '../food/FoodPage';
 import Favorites from '../favs/Favorites';
-import AuthPage from '../auth/banana.js';
+import AuthPage from '../auth/AuthPage.js';
 
 
 class App extends Component {
