@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom';
 import './App.css';
 //import FoodList from '../food/FoodList';
-import AuthPage from '../Auth/AuthPage';
+import AuthPage from '../auth/AuthPage';
 import FoodPage from '../food/FoodPage';
 
 
