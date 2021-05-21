@@ -30,7 +30,7 @@ export async function signIn(credentials) {
 
 export async function getRecipes(search) {
   const response = await request
-    .get('/api/recipes')
+    .get('/api/recipes/list')
     .query({ search: search })
     .set('Authorization', window.localStorage.getItem('TOKEN'));
 
@@ -54,10 +54,11 @@ export async function getMyFavorites() {
 }
 
 export async function addFavorite(favorite) {
+  console.log(favorite);
   const response = await request
     .post('/api/favorites')
-    .send(favorite)
-    .set('Authorization', window.localStorage.getItem('TOKEN'));
+    .set('Authorization', window.localStorage.getItem('TOKEN'))
+    .send(favorite);
 
   return response.body;
 }
