@@ -5,13 +5,13 @@ import './Favorites.css';
 
 export default class Favorites extends Component {
     state = {
-      recipes: []
+      favorites: []
     }
 
     async componentDidMount() {
       try {
-        const recipes = await getMyFavorites();
-        this.setState({ recipes: recipes });
+        const favorites = await getMyFavorites();
+        this.setState({ favorites: favorites });
       }
       catch (err) {
         console.log(err.message);
@@ -38,13 +38,13 @@ export default class Favorites extends Component {
     }
   
     render() {
-      const { recipes } = this.state;
+      const { favorites } = this.state;
+
       return (
         <div className="Favorites">
-          <FoodList recipes={recipes} onFavorited={this.handleFavorited}/>
+          <FoodList recipes={favorites} onFavorited={this.handleFavorited}/>
         
         </div>
       );
     }
-
 }
