@@ -10,7 +10,7 @@ export default class FoodList extends Component {
     return (
       <ul className="FoodList">
         {recipes.map(recipe => (
-          <FoodItem key={recipe.recipeId} recipe={recipe} onFavorited={onFavorited}/>
+          <FoodItem key={recipe.id} recipe={recipe} onFavorited={onFavorited}/>
         ))}
       </ul>
     );
