@@ -1,2 +1,2 @@
-/api/*  https://your-api-server.herokuapp.com/api/:splat 200!
+/api/*  https://enigmatic-harbor-44959.herokuapp.com/api/:splat 200!
 /*      /index.html   200
